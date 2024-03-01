@@ -11,7 +11,11 @@ class Product(models.Model):
 
     name_product = models.CharField(max_length=255)
     start_date_time_product = models.DateTimeField()
-    price_product = models.DecimalField(decimal_places=2, max_digits=2)
+    price_product = models.DecimalField(decimal_places=2, max_digits=10)
+
+
+    def __str__(self) -> str:
+        return self.name_product
 
 
 class Lesson(models.Model):
@@ -37,6 +41,9 @@ class Group(models.Model):
         on_delete=models.CASCADE,
         related_name='group_product',
     )
+    def get_category(self): 
+        return ",".join([str(p) for p in self.group_members.all()])
+    
 
 class AcessProduct(models.Model):
     user = models.ForeignKey(
@@ -47,3 +54,4 @@ class AcessProduct(models.Model):
         Product, 
         on_delete=models.CASCADE,
     )
+    

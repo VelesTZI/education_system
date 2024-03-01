@@ -7,5 +7,16 @@
 </head>
 <body>
     {{text}}
+    <hr>
+    <br>
+    {% for lst in produkl_lst %}
+        {% for key, value in lst.items %}
+            {{ key }}: {{ value }}
+            <br/>
+        {% endfor %}
+        <hr>
+    {% endfor %}
+
+    {{b}}
 </body>
 </html>
