@@ -3,8 +3,10 @@ from django.db.models import Count
 from project.models import *
 
 
+def distribute_user():
+    pass
+
 def list_produkt():
-    product = Product.objects.all()
     products_with_lesson_count = Product.objects.annotate(
         lesson_count=Count('lesson_product')
     )
